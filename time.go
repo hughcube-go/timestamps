@@ -40,6 +40,10 @@ func Now() sql.NullTime {
 ///////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////
 func ParseWithLayout(layout string, date string) (sql.NullTime, error) {
+	if 0 >= len(date) {
+		return ZeroTime(), nil
+	}
+
 	if now, err := time.ParseInLocation(layout, date, time.Local); err == nil {
 		return Time(now), nil
 	} else {
