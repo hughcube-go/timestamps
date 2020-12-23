@@ -326,11 +326,11 @@ func (t *Duration) TouchEndTimestamps() {
 }
 
 func (t *Duration) IsStarted() bool {
-	return t.StartedAt.Valid && t.StartedAt.Time.Before(time.Now())
+	return !t.StartedAt.Valid || t.StartedAt.Time.Before(time.Now())
 }
 
 func (t *Duration) IsEnded() bool {
-	return t.EndedAt.Valid && t.EndedAt.Time.After(time.Now())
+	return !t.EndedAt.Valid || t.EndedAt.Time.After(time.Now())
 }
 
 func (t *Duration) GetDurationLength() int64 {
