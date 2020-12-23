@@ -311,7 +311,7 @@ func (t *Duration) SetEndedAtSqlTime(now sql.NullTime) {
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
-func (t *Duration) LoadDefaultTimestamps() {
+func (t *Duration) LoadDefaultDurationTimestamps() {
 	if !t.StartedAt.Valid {
 		t.StartedAt = Now()
 	}
