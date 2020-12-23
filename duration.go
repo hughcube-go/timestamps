@@ -325,12 +325,16 @@ func (t *Duration) TouchEndTimestamps() {
 	t.EndedAt = Now()
 }
 
-func (t *Duration) IsStarted() bool {
+func (t *Duration) IsStartedTime() bool {
 	return !t.StartedAt.Valid || t.StartedAt.Time.Before(time.Now())
 }
 
-func (t *Duration) IsEnded() bool {
+func (t *Duration) IsEndedTime() bool {
 	return !t.EndedAt.Valid || t.EndedAt.Time.After(time.Now())
+}
+
+func (t *Duration) InActiveTimeRange() bool {
+	return !t.StartedAt.Valid || t.StartedAt.Time.Before(time.Now())
 }
 
 func (t *Duration) GetDurationLength() int64 {
